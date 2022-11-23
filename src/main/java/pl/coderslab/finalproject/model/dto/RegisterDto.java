@@ -1,26 +1,18 @@
-package pl.coderslab.springbootexample.model.dto;
+package pl.coderslab.finalproject.model.dto;
 
 import com.sun.istack.NotNull;
 import lombok.Data;
-import pl.coderslab.springbootexample.model.Role;
-import pl.coderslab.springbootexample.model.User;
+import lombok.NoArgsConstructor;
+import pl.coderslab.finalproject.model.Role;
+import pl.coderslab.finalproject.model.User;
 
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.List;
 
 @Data
-public class RegisterDto { //obiekt DTO czyli Data Transfer Object, wykorzystywany do mapowania formularzy html na obiekt javy
-    //  some DTO from browser
-    //
-    //            v
-    //
-    //Spring @Controller method
-    //
-    //            v
-    //
-    //  Spring @Service method
-    // mozliwa walidacja w DTO
+@NoArgsConstructor
+public class RegisterDto {
 
     @NotNull
     private String name;
@@ -32,7 +24,7 @@ public class RegisterDto { //obiekt DTO czyli Data Transfer Object, wykorzystywa
     private String confirm_password;
 
     public User map(Role role) {
-        if(!this.password.equals(this.confirm_password)) {
+        if (!this.password.equals(this.confirm_password)) {
             return null;
         }
         User user = new User();

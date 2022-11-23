@@ -3,51 +3,53 @@
 <jsp:include page="../fragments/header.jsp"/>
 
 <style>
-    .album {
-        min-width: 75%;
-    }
-
     .spacing {
         width: 100%;
         padding-top: 50px;
         overflow: auto;
     }
+
+    .col-width {
+        width: 100%;
+    }
+
+    .btn-color {
+        color: red;
+    }
+
+    .btn-color:hover {
+        background-color: red;
+    }
 </style>
 
 <div class="spacing">
-<div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <c:forEach items="${items}" var="item">
-            <div class="col">
-                <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"/>
-                        <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                    </svg>
-
-                    <div class="card-body">
-                        <h3>${item.title} • ${item.price} zł</h3>
-                        <p class="card-text">${item.brand.name} • Rok produkcji: ${item.year_of_production}</p>
-                        <p class="card-text">Przebieg: ${item.mileage} km</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a href="<c:url value="/advertising/details/${item.id}"/>"
-                                   class="btn btn-sm btn-outline-secondary">Szczegóły</a>
-                                <a href="<c:url value="/advertising/update/${item.id}"/>"
-                                   class="btn btn-sm btn-outline-secondary">Edytuj</a>
-                                <a href="<c:url value="/advertising/remove/${item.id}"/>"
-                                   class="btn btn-sm btn-outline-secondary">Usuń</a>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <c:forEach items="${users}" var="user">
+                <div class="col col-width">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4>Imię: ${user.name}</h4>
+                            <h4>Nazwa użytkownika: ${user.username}</h4>
+                            <p class="card-text">${user.password}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <c:if test="${user.enabled == 1}">
+                                    <a href="<c:url value="#"/>"
+                                       class="btn btn-sm btn-color btn-outline-secondary">Zablokuj</a>
+                                    </c:if>
+                                    <c:if test="${user.enabled == 0}">
+                                        <a href="<c:url value="#"/>"
+                                           class="btn btn-sm btn-outline-secondary">Odblokuj</a>
+                                    </c:if>
+                                </div>
                             </div>
-                                <%--                                <small class="text-muted">9 mins</small>--%>
                         </div>
                     </div>
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+        </div>
     </div>
-</div>
 </div>
 
 <jsp:include page="../fragments/footer.jsp"/>

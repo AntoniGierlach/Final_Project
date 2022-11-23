@@ -118,11 +118,6 @@
         }
 
     </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet">
-    <link href="sidebars.css" rel="stylesheet">
 </head>
 <body>
 <header class="p-3 text-bg-dark">
@@ -148,7 +143,7 @@
                     <a href="<c:url value="/register"/>" class="btn btn-warning">Zarejestruj</a>
                 </div>
             </c:if>
-            <c:if test="${pageContext.request.isUserInRole('USER') || pageContext.request.isUserInRole('ADMIN')}">
+            <c:if test="${pageContext.request.isUserInRole('USER')}">
                 <div class="text-end">
                     <form action="<c:url value="/user/logout"/>" method="post">
                         <a href="<c:url value="/user/advertising/list"/>" class="btn btn-outline-light me-2">Twoje
@@ -157,6 +152,16 @@
                             ogłoszenie</a>
                         <a href="<c:url value="/user/changePassword"/>" class="btn btn-outline-light me-2">Zmień
                             hasło</a>
+                        <input class="btn btn-warning" type="submit" value="Wyloguj">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
+                </div>
+            </c:if>
+            <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
+                <div class="text-end">
+                    <form action="<c:url value="/user/logout"/>" method="post">
+                        <a href="<c:url value="/admin/users/list"/>" class="btn btn-outline-light me-2">Lista
+                            użytkowników</a>
                         <input class="btn btn-warning" type="submit" value="Wyloguj">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>

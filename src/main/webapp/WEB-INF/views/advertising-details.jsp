@@ -1,43 +1,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="header.jsp"/>
+<jsp:include page="fragments/header.jsp"/>
 
 <style>
-    .feature-icon {
-        width: 4rem;
-        height: 4rem;
-        border-radius: .75rem;
-    }
-
     .icon-link > .bi {
         margin-top: .125rem;
         margin-left: .125rem;
         fill: currentcolor;
         transition: transform .25s ease-in-out;
     }
+
     .icon-link:hover > .bi {
         transform: translate(.25rem);
-    }
-
-    .icon-square {
-        width: 3rem;
-        height: 3rem;
-        border-radius: .75rem;
-    }
-
-    .text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
-    .text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
-    .text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
-
-    .card-cover {
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
     }
 
     .feature-icon-small {
         width: 3rem;
         height: 3rem;
+    }
+
+    img, svg {
+        box-shadow: 2px 2px 5px black;
     }
 </style>
 
@@ -45,10 +28,23 @@
     <h2 class="pb-2 border-bottom">${item.title}</h2>
 
     <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
-        <div class="d-flex flex-column align-items-start gap-2">
-            <h3 class="fw-bold">Opis ogłoszenia</h3>
-            <p class="text-muted">${item.description}</p>
+        <div>
+            <c:if test="${not empty item.image}">
+                <img src='<c:url value="../../../resources/images/${item.image}"></c:url>'
+                     class="bd-placeholder-img card-img-top image-background"
+                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"/>
+            </c:if>
+            <c:if test="${empty item.image}">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#55595c"/>
+                    <text x="42%" y="50%" fill="#eceeef" dy=".3em">Brak zdjęcia</text>
+                </svg>
+            </c:if>
         </div>
+
         <div class="row row-cols-1 row-cols-sm-2 g-4">
             <div class="d-flex flex-column gap-2">
                 <div
@@ -94,8 +90,10 @@
             <div class="d-flex flex-column gap-2">
                 <div
                         class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                    <svg class="bi" width="1em" height="1em">
-                        <use xlink:href="#table" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                         class="bi bi-calendar-event" viewBox="0 0 16 16">
+                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                     </svg>
                 </div>
                 <h5 class="fw-semibold mb-0">${item.year_of_production} r.</h5>
@@ -105,8 +103,11 @@
             <div class="d-flex flex-column gap-2">
                 <div
                         class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                    <svg class="bi" width="1em" height="1em">
-                        <use xlink:href="#speedometer" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                         class="bi bi-speedometer" viewBox="0 0 16 16">
+                        <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+                        <path fill-rule="evenodd"
+                              d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
                     </svg>
                 </div>
                 <h5 class="fw-semibold mb-0">${item.mileage} km</h5>
@@ -116,15 +117,20 @@
             <div class="d-flex flex-column gap-2">
                 <div
                         class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                         class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
                     </svg>
                 </div>
                 <h5 class="fw-semibold mb-0">${item.phone_number}</h5>
                 <p class="text-muted">Numer telefonu właściciela</p>
             </div>
         </div>
+        <div class="d-flex flex-column align-items-start gap-2">
+            <p class="text-muted">${item.description}</p>
+        </div>
     </div>
 </div>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="fragments/footer.jsp"/>

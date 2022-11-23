@@ -17,44 +17,15 @@
 
 
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
         }
 
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
         .bi {
             vertical-align: -.125em;
             fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
         }
 
         .nav-scroller .nav {
@@ -105,52 +76,48 @@
 <body class="text-center">
 
 <main class="form-signin w-100 m-auto">
-    <form:form method="post">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-people-fill"
+    <form:form method="post" modelAttribute="registerDto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-plus"
              viewBox="0 0 16 16">
-            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
             <path fill-rule="evenodd"
-                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                  d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
         </svg>
-        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+        <h1 class="h3 mb-3 fw-normal">Zarejestruj się</h1>
 
 
         <div class="form-floating">
             <input type="text" id="firstName" name="name" class="form-control" placeholder="First name"
                    required="required" autofocus="autofocus">
-            <label for="firstName">Name</label>
+            <label for="firstName">Imię</label>
+            <form:errors path="name"/>
         </div>
 
         <div class="form-floating">
             <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username"
                    required="required">
-            <label for="inputUsername">Username</label>
+            <label for="inputUsername">Nazwa użytkownika</label>
+            <form:errors path="username"/>
         </div>
-        </br>
         <div class="form-floating">
             <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
                    required="required">
-            <label for="inputPassword">Password</label>
+            <label for="inputPassword">Hasło</label>
+            <form:errors path="password"/>
         </div>
 
         <div class="form-floating">
             <input type="password" id="confirmPassword" name="confirm_password" class="form-control"
                    placeholder="Confirm password" required="required">
-            <label for="confirmPassword">Confirm password</label>
-        </div>
-
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-        <div class="form-floating">
-            <form:errors path="name"/>
-            <form:errors path="username"/>
-            <form:errors path="password"/>
+            <label for="confirmPassword">Potwierdź hasło</label>
             <form:errors path="confirm_password"/>
         </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Zarejestruj</button>
     </form:form>
 
     <div class="text-center">
-        <a class="d-block small mt-3" href="/login">Login Page</a>
+        <a class="d-block small mt-3" href="/login">Zaloguj się</a>
         <p class="mt-5 mb-3 text-muted">&copy; Final Project 2022</p>
     </div>
 </main>

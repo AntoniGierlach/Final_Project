@@ -1,4 +1,4 @@
-package pl.coderslab.springbootexample.model;
+package pl.coderslab.finalproject.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,6 +19,6 @@ public class Role {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(mappedBy="roles")
+    @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 }

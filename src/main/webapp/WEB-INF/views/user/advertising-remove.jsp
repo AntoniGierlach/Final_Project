@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../fragments/header.jsp"/>
 
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
@@ -21,4 +21,4 @@
     </div>
 </section>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../fragments/footer.jsp"/>

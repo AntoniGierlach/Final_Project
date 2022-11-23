@@ -1,9 +1,10 @@
-package pl.coderslab.springbootexample.model;
+package pl.coderslab.finalproject.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
+
 @Entity
 @Data
 public class User {
@@ -15,6 +16,6 @@ public class User {
     private String username;
     private String password;
     private int enabled;
-    @ManyToMany(fetch = FetchType.EAGER, cascade= CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Role> roles;
 }

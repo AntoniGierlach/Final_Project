@@ -1,13 +1,14 @@
-package pl.coderslab.springbootexample.repository;
+package pl.coderslab.finalproject.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import pl.coderslab.springbootexample.model.User;
+import pl.coderslab.finalproject.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
+
     @Query("select u from User u where u.username=:username")
     User findByUsername(@Param("username") String username);
 }

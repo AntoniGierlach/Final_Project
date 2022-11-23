@@ -1,12 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../fragments/header.jsp"/>
 
 <style>
     .spacing {
         width: 100%;
         padding-top: 50px;
+        overflow: auto;
     }
 </style>
 
@@ -60,15 +61,13 @@
 
                     <div class="col-md-5">
                         <form:label cssClass="form-label" path="category.id">Kategoria</form:label>
-                        <form:select cssClass="form-select" path="category.id" items="${category}" itemLabel="name"
-                                     itemValue="id"/>
+                        <form:select cssClass="form-select" path="category.id" items="${category}" itemLabel="name" itemValue="id"/>
                         <form:errors path="category.id" cssStyle="color: red"/>
                     </div>
 
                     <div class="col-md-4">
                         <form:label cssClass="form-label" path="brand.id">Marka</form:label>
-                        <form:select cssClass="form-select" path="brand.id" items="${brand}" itemLabel="name"
-                                     itemValue="id"/>
+                        <form:select cssClass="form-select" path="brand.id" items="${brand}" itemLabel="name" itemValue="id"/>
                         <form:errors path="brand.id" cssStyle="color: red"/>
                     </div>
                     <hr class="my-4">
@@ -79,4 +78,4 @@
         </div>
     </div>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../fragments/footer.jsp"/>
